@@ -1,0 +1,70 @@
+﻿@model HomeDepotWebApp.Models.Rent
+
+@{
+    ViewBag.Title = "Book";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col">
+            <h3>Booking oplysninger</h3>
+            <table class="table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Navn</th>
+                        <th>Værdi</th>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.RentTool.Name)</td>
+                        <td>@Html.DisplayFor(model => model.RentTool.Name)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.RentTool.Description)</td>
+                        <td>@Html.DisplayFor(model => model.RentTool.Description)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.RentTool.Depos)</td>
+                        <td>@Html.DisplayFor(model => model.RentTool.Depos)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.RentTool.DayPrice)</td>
+                        <td>@Html.DisplayFor(model => model.RentTool.DayPrice)</td>
+                    </tr>
+                </thead>
+            </table>
+            <br />
+            <br />
+            <div>
+                @using (Html.BeginForm("BookConfirm", "Home", FormMethod.Post))
+                {
+                    @Html.DisplayNameFor(model => model.Days);
+                    @Html.EditorFor(model => model.Days, new { htmlAttributes = new { @id = "days", @class = "form-control" } })
+                    @Html.DisplayNameFor(model => model.PickUp);
+                    @Html.EditorFor(model => model.PickUp, new { htmlAttributes = new { @id = "tid", @class = "form-control" } });
+                    <input type="submit" value="Bekræft booking" class="btn btn-success btn-lg" style="background-color:blue">
+                }
+            </div>
+        </div>
+        
+        <div class="col">
+            <h3>Kunde oplysninger</h3>
+            @Html.DisplayNameFor(model => model.Customer.CustomerId):
+            @Html.DisplayFor(model => model.Customer.CustomerId)
+            <br />
+            @Html.DisplayNameFor(model => model.Customer.Email):
+            @Html.DisplayFor(model => model.Customer.Email)
+            <br />
+            @Html.DisplayNameFor(model => model.Customer.Name):
+            @Html.DisplayFor(model => model.Customer.Name)
+        </div>
+        
+    </div>
+</body>
+</html>
